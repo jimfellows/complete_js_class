@@ -242,18 +242,17 @@ switch (true) {
     default:
         console.log(firstName + ' name unknown!')
 }
+
 */
-
-
 
 
 /**************************
 Truthy & Falsey and equality
 **************************/
-/*
+
 //falsy: undefined, null, 0, '', NaN,
 //truthy: all values that are not falsy
-
+/*
 var height;
 height = '';
 if (height || height == 0) {
@@ -442,6 +441,7 @@ console.log(finalBills);
 /**************************
 Objects and properties
 **************************/
+/*
 var john = {
     firstName: 'John',
     lastName: 'Smith', 
@@ -470,19 +470,197 @@ jane.firstName = 'Jane';
 jane.birthYear = 1969;
 jane['lastName'] = 'Smith';
 console.log(jane);
+*/
 
 
 
 
+/********************************
+Objects and Properties
+*/
+/*
+//object literal
+var john = {
+    firstName: 'John',
+    lastName: 'Smith',
+    birthYear: '1990',
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'teacher',
+    isMarried: false
+};
+
+console.log(john.firstName);
+console.log(john['lastName']);
+var x = 'birthYear';
+console.log(john[x]);
 
 
 
+john.job = 'designer';
+john.isMarried = true;
+console.log(john);
+
+//New object
+var jane = new Object();
+jane.firstName = 'Jane';
+jane.birthYear = 1990
+
+console.log(jane);
+console.log(typeof(jane));
+*/
 
 
 
+/*****************************
+Objects & Methods
+*/
+/*
+var john = {
+    firstName: 'John',
+    lastName: 'Smith',
+    birthYear: 1990,
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'teacher',
+    isMarried: false,
+    calcAge: function() {
+        this.age  = new Date().getFullYear() - this.birthYear;
+    }
+};
+
+john.calcAge();
+console.log(john.age);
+*/
+
+
+/**************************
+Coding Challenge #4
+*/
+/*
+var mark, john
+
+mark = {
+    firstName: 'mark',
+    mass: 130,
+    height: 1.5,
+    calcBmi: function() {
+        this.bmi = this.mass / (this.height**2);
+        return this.bmi
+    }
+};
+
+john = {
+    firstName: 'john',
+    mass: 130,
+    height: 1.5,
+    calcBmi: function() {
+        this.bmi = this.mass / (this.height**2);
+        return this.bmi
+    }
+};
+
+console.log(john.bmi, mark.bmi);
+
+if (john.calcBmi() > mark.calcBmi()) {
+    console.log('John has a higher bmi');
+} else if (mark.calcBmi() > john.calcBmi()) {
+    console.log('Mark has a higher bmi');
+} else {
+    console.log('John and Mark have the same BMI');
+}
+
+
+*/
+
+/*************************************
+Loops and iteration
+*/
+//basic loop
+//var john = ['John', 'Smith', 1990, 'designer', false];
+
+/*
+for (var i = 0; i <= 20; i+= 2) {
+    console.log(i);
+}
+
+
+for (var i = 0; i < john.length; i++) {
+    console.log(john[i]);
+}
+*/
+/*
+var i = 0;
+while(i < john.length) {
+    console.log(john[i]);
+    i++;
+}
+*/
+
+/**********************
+Continue and break
+*/
+/*
+//continue example
+var john = ['John', 'Smith', 1990, 'designer', false];
+for (var i = 0; i < john.length; i++) {
+    if (typeof john[i] !== 'string') continue;
+    //console.log(john[i]);
+}
+
+//break example
+for (var i = 0; i < john.length; i++) {
+    if (typeof john[i] !== 'string') break;
+    //console.log(john[i]);
+}
+
+//backwards loop
+for (var i = john.length - 1; i >= 0; i--) {
+    console.log(john[i]);
+}
+
+
+*/
 
 
 
+/*****************************
+Coding Challenge 5
+*/
+
+johnFamily = {
+    bills: [124, 48, 268, 180, 42],
+    tips: [],
+    totals: [],
+    calcTips: function() {
+        for (var i = 0; i < this.bills.length; i++) {
+            var b = this.bills[i];
+            var r = 0
+            if (b < 50) {
+                r = .2
+            } else if (b >=50 && b <=200) {
+                r = .15
+            } else {
+                r = .1
+            }
+            this.tips.push(parseFloat((b*r).toFixed(3)));
+            this.totals.push(parseFloat((b + (b*r)).toFixed(3)));
+        }
+    }
+}
+
+var arrayAvg = function(a) {
+    var t = 0;
+    for (var i = 0; i < a.length; i++) {
+        t = t + a[i];
+    }
+    return t / a.length
+}
+
+johnFamily.calcTips();
+console.log(johnFamily.bills);
+console.log(johnFamily.tips);
+console.log(johnFamily.totals);
+
+console.log(arrayAvg(johnFamily.tips));
 
 
 
